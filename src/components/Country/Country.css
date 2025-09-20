@@ -13,3 +13,8 @@
     rgba(252, 70, 107, 1) 100%
   );
 }
+
+.visited-flags-container img {
+  width: 120px;
+  margin-right: 10px;
+}
