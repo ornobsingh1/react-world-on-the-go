@@ -2,29 +2,28 @@ import { use, useState } from "react";
 import Country from "../Country/Country";
 import "./Countries.css";
 
-const Countries = ({ countriesPromise }) => {
+const Countries = ({ CountriesPromise }) => {
   const [visitedCountries, setVisitedCountries] = useState([]);
   const [visitedFlags, setVisitedFlags] = useState([]);
 
   const handleVisitedCountries = (country) => {
-    // console.log("visited countries", country);
     const newVisitedCountries = [...visitedCountries, country];
     setVisitedCountries(newVisitedCountries);
   };
 
   const handleVisitedFlags = (flag) => {
-    // console.log('flag needed to add', flag)
     const newVisitedFlags = [...visitedFlags, flag];
     setVisitedFlags(newVisitedFlags);
   };
 
-  const countriesData = use(countriesPromise);
+  const countriesData = use(CountriesPromise);
   const countries = countriesData.countries;
   return (
     <div>
-      <h2>In The Countries: {countries.length}</h2>
-      <h4>Total Country Visited: {visitedCountries.length}</h4>
-      <h4>Total Flags Visited: {visitedFlags.length}</h4>
+      <p>In The Countries: {countries.length}</p>
+      <p>Total Country Visited: {visitedCountries.length}</p>
+      <p>Total Flags Visited: {visitedFlags.length}</p>
+
       <ol>
         {visitedCountries.map((country) => (
           <li key={country.cca3.cca3}>{country.name.common}</li>
@@ -33,17 +32,17 @@ const Countries = ({ countriesPromise }) => {
 
       <div className="visited-flags-container">
         {visitedFlags.map((flag, idx) => (
-          <img key={idx} src={flag} />
+          <img key={idx} src={flag} alt="" />
         ))}
       </div>
 
       <div className="countries">
         {countries.map((country) => (
           <Country
-            handleVisitedFlags={handleVisitedFlags}
-            handleVisitedCountries={handleVisitedCountries}
             key={country.cca3.cca3}
             country={country}
+            handleVisitedCountries={handleVisitedCountries}
+            handleVisitedFlags={handleVisitedFlags}
           />
         ))}
       </div>

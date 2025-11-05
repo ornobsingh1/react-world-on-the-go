@@ -5,21 +5,20 @@ const Country = ({ country, handleVisitedCountries, handleVisitedFlags }) => {
   const [visited, setVisited] = useState(false);
 
   const handleVisited = () => {
-    // if (visited) {
-    //   setVisited(false);
+    // if(visited){
+    //   setVisited(false)
     // } else {
-    //   setVisited(true);
+    //   setVisited(true)
     // }
 
-    // setVisited(visited ? false : true);
+    // setVisited(visited ? "false" : "true");
 
     setVisited(!visited);
     handleVisitedCountries(country);
   };
-
   return (
     <div className={`country ${visited && "country-visited"}`}>
-      <img src={country?.flags?.flags?.png} alt={country.flags.flags.alt} />
+      <img src={country.flags.flags.png} alt={country.flags.flags.alt} />
       <h2>Name: {country.name.common}</h2>
       <p>Population: {country.population.population}</p>
       <p>
@@ -29,8 +28,9 @@ const Country = ({ country, handleVisitedCountries, handleVisitedFlags }) => {
       <button onClick={handleVisited}>
         {visited ? "Visited" : "Not Visited"}
       </button>
-      <button onClick={() => handleVisitedFlags(country?.flags?.flags?.png)}>
-        Add Visited Flag
+
+      <button onClick={() => handleVisitedFlags(country.flags.flags.png)}>
+        Add visited Flag
       </button>
     </div>
   );

@@ -1,19 +1,18 @@
 import { Suspense } from "react";
-import "./App.css";
 import Countries from "./components/Countries/Countries";
 
-function App() {
-  const countriesPromise = fetch(
-    "https://openapi.programming-hero.com/api/all"
-  ).then((res) => res.json());
+const CountriesPromise = fetch(
+  "https://openapi.programming-hero.com/api/all"
+).then((res) => res.json());
 
+const App = () => {
   return (
-    <>
-      <Suspense fallback={<p>Loading...</p>}>
-        <Countries countriesPromise={countriesPromise} />
+    <div>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <Countries CountriesPromise={CountriesPromise} />
       </Suspense>
-    </>
+    </div>
   );
-}
+};
 
 export default App;
